@@ -1,77 +1,131 @@
-/* Mobile responsive layer for Един грам живот */
-@media (max-width: 900px) {
-  html { scroll-behavior: smooth; }
-  body { overflow-x: hidden; }
-  .c { width: min(100% - 32px, 760px) !important; }
-  header { position: sticky; top: 0; }
-  nav {
-    min-height: auto !important;
-    padding: 10px 0 12px;
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 12px !important;
-  }
-  .brand { min-width: 0; }
-  .brand img { width: 46px !important; height: 46px !important; flex: 0 0 auto; }
-  .brand span { font-size: .78rem !important; line-height: 1.1; letter-spacing: .015em; }
-  .links {
-    display: flex !important;
-    width: 100%;
-    gap: 8px !important;
-    overflow-x: auto;
-    padding: 4px 0 1px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .links::-webkit-scrollbar { display: none; }
-  .links a {
-    flex: 0 0 auto;
-    white-space: nowrap;
-    padding: 9px 12px;
-    border: 1px solid var(--line, #d7eaed);
-    border-radius: 999px;
-    background: #fff;
-    font-size: .82rem;
-  }
-  .hero, .sec { overflow: hidden; }
-  .heroGrid, .story, .program, .conference, .org, .introGrid, .split, .cta {
-    grid-template-columns: 1fr !important;
-  }
-  .heroGrid { min-height: auto !important; gap: 30px !important; padding: 46px 0 !important; }
-  .hero { padding-top: 0 !important; }
-  h1 { font-size: clamp(2.35rem, 11vw, 3.65rem) !important; line-height: 1.02 !important; }
-  h2 { font-size: clamp(1.9rem, 8.5vw, 2.75rem) !important; }
-  .lead, .storyLead { font-size: 1.05rem !important; }
-  .heroVisual, .heroArt, .visual, .programImg, .conferenceImg, .storyImg { width: 100%; max-width: 620px; margin-left: auto; margin-right: auto; }
-  .heroVisual img { border-radius: 26px !important; }
-  .heroBadge { left: 10px !important; right: 10px; bottom: 10px !important; width: fit-content; max-width: calc(100% - 20px); }
-  .actions { gap: 10px !important; }
-  .btn { min-height: 44px; display: inline-flex !important; align-items: center; justify-content: center; text-align: center; }
-  .tiles, .impact, .facts, .pillars { grid-template-columns: 1fr !important; }
-  .tile img { height: auto !important; aspect-ratio: 16/10; }
-  .pills { grid-template-columns: 1fr !important; }
-  .daysWrap { grid-template-columns: 1fr !important; gap: 26px !important; }
-  .dailyVisual { width: min(320px, 100%) !important; margin: auto; }
-  .module button { padding: 17px 16px !important; gap: 12px !important; }
-  .module button span:first-child { align-items: flex-start !important; }
-  img { max-width: 100%; height: auto; }
-  footer { text-align: center; }
+/* Responsive mobile layer for „Един грам живот“ */
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{overflow-x:hidden}
+img,iframe{max-width:100%}
+
+@media (max-width:900px){
+  .c{width:min(calc(100% - 32px),760px)!important}
+
+  header{position:sticky!important;top:0;z-index:100!important}
+  nav{min-height:auto!important;padding:10px 0 12px;display:flex!important;flex-wrap:wrap;align-items:center;gap:8px 12px!important}
+  .brand{min-width:0;max-width:100%}
+  .brand img{width:46px!important;height:46px!important;flex:0 0 auto;object-fit:contain!important}
+  .brand span{font-size:.8rem!important;line-height:1.1;letter-spacing:.015em}
+  .links{display:flex!important;width:100%;gap:8px!important;overflow-x:auto;overscroll-behavior-inline:contain;padding:4px 0 2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .links::-webkit-scrollbar{display:none}
+  .links a{flex:0 0 auto;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;padding:9px 13px;border:1px solid var(--line,#d7eaed);border-radius:999px;background:#fff;font-size:.82rem}
+
+  .hero,.sec,.events,.video-section{overflow:hidden}
+  .heroGrid,.story,.program,.conference,.org,.introGrid,.split,.cta,.two,.event,.event:nth-child(even){grid-template-columns:1fr!important}
+  .event:nth-child(even) .visual,.event:nth-child(even) .galleryVisual{order:0!important}
+  .heroGrid{min-height:auto!important;gap:30px!important;padding:42px 0!important}
+  h1{font-size:clamp(2.35rem,10vw,3.65rem)!important;line-height:1.03!important;overflow-wrap:anywhere}
+  h2{font-size:clamp(1.9rem,7vw,2.75rem)!important;line-height:1.08!important}
+  .lead,.storyLead,.intro{font-size:1.05rem!important}
+
+  .heroVisual,.heroArt,.visual,.programImg,.conferenceImg,.storyImg{width:100%;max-width:620px;margin-left:auto;margin-right:auto}
+  .heroVisual img{border-radius:24px!important}
+  .heroBadge{left:10px!important;right:10px;bottom:10px!important;width:fit-content;max-width:calc(100% - 20px)}
+
+  .actions{gap:10px!important}
+  .btn{min-height:44px;display:inline-flex!important;align-items:center;justify-content:center;text-align:center}
+
+  .tiles,.impact,.facts,.pillars,.cards,.grid{grid-template-columns:1fr!important}
+  .tile img{height:auto!important;aspect-ratio:16/10}
+  .pills{grid-template-columns:1fr!important}
+  .panel,.pillar,.fact,.card,.box{min-width:0}
+
+  .daysWrap{grid-template-columns:1fr!important;gap:26px!important}
+  .dailyVisual{width:min(320px,100%)!important;margin:auto}
+
+  .event{margin-bottom:22px!important}
+  .visual{min-height:0!important}
+  .visual img{height:auto!important;max-height:none!important}
+  .body{padding:26px!important}
+  .galleryVisual{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:10px!important;gap:8px!important}
+  .galleryVisual img{width:100%!important;height:auto!important;aspect-ratio:1/1!important;object-fit:cover!important}
+  .galleryVisual img:first-child{grid-column:1/-1!important;aspect-ratio:16/10!important}
+
+  .gallery{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important;gap:10px!important}
+  .gallery .main{grid-column:1/-1!important;grid-row:auto!important}
+  .gallery img{height:auto!important;aspect-ratio:4/3!important}
+  .gallery .main{aspect-ratio:16/10!important}
+  .morepics,.more{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .morepics img,.more img{height:auto!important;aspect-ratio:4/3!important}
+
+  .support{gap:7px!important}
+  .support span{font-size:.82rem!important;overflow-wrap:anywhere}
+
+  .module button{padding:17px 16px!important;gap:12px!important}
+  .module button span:first-child{align-items:flex-start!important}
+
+  .days{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
+  .day{min-width:0}
+  .day b{font-size:.88rem}
+
+  .modal{padding:16px!important}
+  .modal .box{max-height:92vh;overflow:auto}
+  .bar{flex-wrap:wrap}
+
+  .video-wrap{width:min(100%,620px)!important}
+  .video-wrap iframe{height:min(650px,78vh)!important}
+
+  footer{text-align:center}
 }
 
-@media (max-width: 600px) {
-  .c { width: calc(100% - 24px) !important; }
-  .sec { padding: 48px 0 !important; }
-  .heroGrid { padding: 34px 0 42px !important; }
-  .eyebrow, .k { font-size: .7rem !important; letter-spacing: .1em !important; }
-  h1 { font-size: clamp(2.2rem, 12vw, 3.15rem) !important; }
-  h2 { font-size: clamp(1.8rem, 9vw, 2.45rem) !important; }
-  h3 { font-size: 1.2rem !important; }
-  p, li { overflow-wrap: anywhere; }
-  .actions { flex-direction: column; align-items: stretch; }
-  .actions .btn, .call .btn, .tileBody .btn { width: 100%; }
-  .daysWrap, .call, .statement, .cta { padding: 24px !important; border-radius: 22px !important; }
-  .panel, .pillar, .fact, .tileBody { padding: 20px !important; }
-  .heroArt, .visual, .programImg { padding: 16px !important; border-radius: 22px !important; }
-  .quote { font-size: 1.12rem !important; }
+@media (max-width:600px){
+  .c{width:calc(100% - 24px)!important}
+  nav{padding:8px 0 10px}
+  .brand img{width:42px!important;height:42px!important}
+  .brand span{font-size:.76rem!important}
+  .links{gap:6px!important}
+  .links a{padding:8px 11px;font-size:.8rem}
+
+  .sec{padding:46px 0!important}
+  .events{padding-bottom:52px!important}
+  .heroGrid{padding:32px 0 40px!important;gap:24px!important}
+  .eyebrow,.k{font-size:.7rem!important;letter-spacing:.1em!important}
+  h1{font-size:clamp(2.05rem,11.5vw,3.1rem)!important}
+  h2{font-size:clamp(1.72rem,8.5vw,2.35rem)!important}
+  h3{font-size:1.18rem!important}
+  p,li{overflow-wrap:anywhere}
+
+  .actions{flex-direction:column;align-items:stretch}
+  .actions .btn,.call .btn,.tileBody .btn{width:100%}
+
+  .daysWrap,.call,.statement,.cta,.quote,.closing,.banner{padding:24px!important;border-radius:22px!important}
+  .panel,.pillar,.fact,.tileBody,.card,.box,.body,.film,.next{padding:20px!important}
+  .heroArt,.visual,.programImg{padding:14px!important;border-radius:22px!important}
+  .quote{font-size:1.1rem!important}
+
+  .galleryVisual{padding:8px!important;gap:7px!important}
+  .gallery{grid-template-columns:1fr!important}
+  .gallery .main{grid-column:auto!important}
+  .gallery img,.gallery .main{aspect-ratio:16/10!important}
+  .morepics,.more{grid-template-columns:1fr!important}
+
+  .meta{gap:7px!important}
+  .meta span,.date,.meta{font-size:.82rem!important}
+
+  .days{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;padding-bottom:48px!important}
+  .day b{padding:9px!important;font-size:.82rem}
+
+  .modal{padding:10px!important}
+  .modal .box{width:100%!important;border-radius:16px!important;padding:10px!important}
+  .box img{max-height:68vh!important}
+  .bar{align-items:stretch!important}
+  .bar>div{display:flex;gap:8px;width:100%}
+  .bar .btn{flex:1;margin:0!important}
+
+  .video-section{padding:46px 0!important}
+  .video-wrap iframe{height:min(580px,74vh)!important}
+}
+
+@media (max-width:380px){
+  .c{width:calc(100% - 20px)!important}
+  .brand span{font-size:.7rem!important}
+  .links a{font-size:.76rem;padding:8px 9px}
+  .days{grid-template-columns:1fr!important}
+  .galleryVisual{grid-template-columns:1fr!important}
+  .galleryVisual img:first-child{grid-column:auto!important}
 }
