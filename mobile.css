@@ -20,6 +20,23 @@ img,iframe{max-width:100%}
 .journeySteps .step:nth-child(2){transform:translateY(16px)}
 .journeySteps .step:nth-child(2):hover{transform:translateY(6px)}
 
+/* Desktop emphasis: make the journey unmistakably visual */
+@media (min-width:901px){
+  .journeySteps{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;align-items:stretch!important;padding:18px 8px 28px!important}
+  .journeySteps:before{left:7%!important;right:7%!important;top:53%!important;height:5px!important;opacity:.32!important;border-radius:999px!important;box-shadow:0 0 24px rgba(39,163,176,.18)}
+  .journeySteps .step{min-height:270px!important;padding:34px 30px 38px!important;border-radius:34px!important;box-shadow:0 20px 48px rgba(18,57,70,.14)!important;isolation:isolate}
+  .journeySteps .step:nth-child(1){background:linear-gradient(145deg,#ffffff 0%,#eef9fb 100%)!important;border-top:5px solid #117f96!important}
+  .journeySteps .step:nth-child(2){background:linear-gradient(145deg,#ffffff 0%,#eefbf7 100%)!important;border-top:5px solid #27a3b0!important;transform:translateY(-14px)!important}
+  .journeySteps .step:nth-child(3){background:linear-gradient(145deg,#ffffff 0%,#effaf6 100%)!important;border-top:5px solid #1ca58d!important}
+  .journeySteps .step:before{width:190px!important;height:190px!important;right:-70px!important;top:-75px!important;opacity:.9}
+  .journeySteps .step b{width:58px!important;height:58px!important;font-size:1rem!important;box-shadow:0 12px 28px rgba(17,127,150,.28)!important}
+  .journeySteps .step strong{font-size:2rem!important;margin:28px 0 14px!important;color:#123946!important}
+  .journeySteps .step span{font-size:1.02rem!important;max-width:86%!important}
+  .journeySteps .step:after{right:26px!important;bottom:18px!important;font-size:2.35rem!important}
+  .journeySteps .step:hover{transform:translateY(-16px) scale(1.025)!important;box-shadow:0 32px 70px rgba(18,57,70,.22)!important}
+  .journeySteps .step:nth-child(2):hover{transform:translateY(-24px) scale(1.025)!important}
+}
+
 @media (max-width:900px){
   .c{width:min(calc(100% - 32px),760px)!important}
 
