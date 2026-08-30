@@ -3,6 +3,24 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{overflow-x:hidden}
 img,iframe{max-width:100%}
 
+/* Desktop film section */
+@media (min-width:901px){
+  .links{display:flex!important}
+  .filmHome{display:block!important;background:#071216!important;color:#fff!important;overflow:hidden!important}
+  .filmHomeGrid{display:grid!important;grid-template-columns:1.05fr .95fr!important;gap:48px!important;align-items:center!important}
+  .filmHome .eyebrow{color:#ef666b!important}
+  .filmHome h2{font-size:clamp(3rem,6vw,5.6rem)!important;line-height:.92!important;color:#fff!important}
+  .filmHome h2 span{color:#d3232a!important}
+  .filmHome p{color:#c5ced0!important;font-size:1.1rem!important}
+  .filmStats{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:10px!important;margin:26px 0!important}
+  .filmStat{display:block!important;padding:18px!important;border:1px solid #ffffff24!important;background:#ffffff0b!important;border-radius:18px!important}
+  .filmStat strong{display:block!important;color:#fff!important;font-size:1.55rem!important}
+  .filmStat span{font-size:.82rem!important;color:#aebabc!important}
+  .filmPoster{display:block!important;position:relative!important;max-width:none!important}
+  .filmPoster img{display:block!important;width:100%!important;border-radius:24px!important;box-shadow:0 30px 70px #0009!important}
+  .filmBtn{display:inline-flex!important;background:#d3232a!important;color:#fff!important}
+}
+
 /* Interactive journey cards */
 .journeySteps{position:relative;gap:22px!important;margin:42px 0 50px!important}
 .journeySteps:before{content:"";position:absolute;left:9%;right:9%;top:50%;height:3px;background:linear-gradient(90deg,#117f96,#27a3b0,#1ca58d);opacity:.28;z-index:0}
@@ -39,7 +57,6 @@ img,iframe{max-width:100%}
 
 @media (max-width:900px){
   .c{width:min(calc(100% - 32px),760px)!important}
-
   header{position:sticky!important;top:0;z-index:100!important}
   nav{min-height:auto!important;padding:10px 0 12px;display:flex!important;flex-wrap:wrap;align-items:center;gap:8px 12px!important}
   .brand{min-width:0;max-width:100%}
@@ -48,7 +65,6 @@ img,iframe{max-width:100%}
   .links{display:flex!important;width:100%;gap:8px!important;overflow-x:auto;overscroll-behavior-inline:contain;padding:4px 0 2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .links::-webkit-scrollbar{display:none}
   .links a{flex:0 0 auto;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;padding:9px 13px;border:1px solid var(--line,#d7eaed);border-radius:999px;background:#fff;font-size:.82rem}
-
   .hero,.sec,.events,.video-section{overflow:hidden}
   .heroGrid,.story,.program,.conference,.org,.introGrid,.split,.cta,.two,.event,.event:nth-child(even){grid-template-columns:1fr!important}
   .event:nth-child(even) .visual,.event:nth-child(even) .galleryVisual{order:0!important}
@@ -56,14 +72,11 @@ img,iframe{max-width:100%}
   h1{font-size:clamp(2.35rem,10vw,3.65rem)!important;line-height:1.03!important;overflow-wrap:anywhere}
   h2{font-size:clamp(1.9rem,7vw,2.75rem)!important;line-height:1.08!important}
   .lead,.storyLead,.intro{font-size:1.05rem!important}
-
   .heroVisual,.heroArt,.visual,.programImg,.conferenceImg,.storyImg{width:100%;max-width:620px;margin-left:auto;margin-right:auto}
   .heroVisual img{border-radius:24px!important}
   .heroBadge{left:10px!important;right:10px;bottom:10px!important;width:fit-content;max-width:calc(100% - 20px)}
-
   .actions{gap:10px!important}
   .btn{min-height:44px;display:inline-flex!important;align-items:center;justify-content:center;text-align:center}
-
   .tiles,.impact,.facts,.pillars,.cards,.grid{grid-template-columns:1fr!important}
   .tile img{height:auto!important;aspect-ratio:16/10}
   .pills{grid-template-columns:1fr!important}
@@ -74,10 +87,8 @@ img,iframe{max-width:100%}
   .journeySteps .step:hover,.journeySteps .step:nth-child(2):hover{transform:translateY(-4px)!important}
   .journeySteps .step b{position:absolute;left:17px;top:25px}
   .journeySteps .step strong{margin-top:4px!important}
-
   .daysWrap{grid-template-columns:1fr!important;gap:26px!important}
   .dailyVisual{width:min(320px,100%)!important;margin:auto}
-
   .event{margin-bottom:22px!important}
   .visual{min-height:0!important}
   .visual img{height:auto!important;max-height:none!important}
@@ -85,31 +96,24 @@ img,iframe{max-width:100%}
   .galleryVisual{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:10px!important;gap:8px!important}
   .galleryVisual img{width:100%!important;height:auto!important;aspect-ratio:1/1!important;object-fit:cover!important}
   .galleryVisual img:first-child{grid-column:1/-1!important;aspect-ratio:16/10!important}
-
   .gallery{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important;gap:10px!important}
   .gallery .main{grid-column:1/-1!important;grid-row:auto!important}
   .gallery img{height:auto!important;aspect-ratio:4/3!important}
   .gallery .main{aspect-ratio:16/10!important}
   .morepics,.more{grid-template-columns:1fr 1fr!important;gap:10px!important}
   .morepics img,.more img{height:auto!important;aspect-ratio:4/3!important}
-
   .support{gap:7px!important}
   .support span{font-size:.82rem!important;overflow-wrap:anywhere}
-
   .module button{padding:17px 16px!important;gap:12px!important}
   .module button span:first-child{align-items:flex-start!important}
-
   .days{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
   .day{min-width:0}
   .day b{font-size:.88rem}
-
   .modal{padding:16px!important}
   .modal .box{max-height:92vh;overflow:auto}
   .bar{flex-wrap:wrap}
-
   .video-wrap{width:min(100%,620px)!important}
   .video-wrap iframe{height:min(650px,78vh)!important}
-
   footer{text-align:center}
 }
 
@@ -120,7 +124,6 @@ img,iframe{max-width:100%}
   .brand span{font-size:.76rem!important}
   .links{gap:6px!important}
   .links a{padding:8px 11px;font-size:.8rem}
-
   .sec{padding:46px 0!important}
   .events{padding-bottom:52px!important}
   .heroGrid{padding:32px 0 40px!important;gap:24px!important}
@@ -129,10 +132,8 @@ img,iframe{max-width:100%}
   h2{font-size:clamp(1.72rem,8.5vw,2.35rem)!important}
   h3{font-size:1.18rem!important}
   p,li{overflow-wrap:anywhere}
-
   .actions{flex-direction:column;align-items:stretch}
   .actions .btn,.call .btn,.tileBody .btn{width:100%}
-
   .daysWrap,.call,.statement,.cta,.quote,.closing,.banner{padding:24px!important;border-radius:22px!important}
   .panel,.pillar,.fact,.tileBody,.card,.box,.body,.film,.next{padding:20px!important}
   .heroArt,.visual,.programImg{padding:14px!important;border-radius:22px!important}
@@ -141,26 +142,21 @@ img,iframe{max-width:100%}
   .journeySteps .step b{left:14px;top:22px;width:44px;height:44px}
   .journeySteps .step strong{font-size:1.45rem!important}
   .journeySteps .step:after{font-size:1.5rem;right:18px;bottom:12px}
-
   .galleryVisual{padding:8px!important;gap:7px!important}
   .gallery{grid-template-columns:1fr!important}
   .gallery .main{grid-column:auto!important}
   .gallery img,.gallery .main{aspect-ratio:16/10!important}
   .morepics,.more{grid-template-columns:1fr!important}
-
   .meta{gap:7px!important}
   .meta span,.date,.meta{font-size:.82rem!important}
-
   .days{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;padding-bottom:48px!important}
   .day b{padding:9px!important;font-size:.82rem}
-
   .modal{padding:10px!important}
   .modal .box{width:100%!important;border-radius:16px!important;padding:10px!important}
   .box img{max-height:68vh!important}
   .bar{align-items:stretch!important}
   .bar>div{display:flex;gap:8px;width:100%}
   .bar .btn{flex:1;margin:0!important}
-
   .video-section{padding:46px 0!important}
   .video-wrap iframe{height:min(580px,74vh)!important}
 }
