@@ -33,6 +33,8 @@ img,iframe{max-width:100%}
 .journeySteps .step strong{display:block;font-size:1.8rem!important;line-height:1.05;margin:0 0 13px!important;color:#fff!important}
 .journeySteps .step span{display:block;color:rgba(255,255,255,.9)!important;max-width:100%!important;line-height:1.55;font-size:1rem}
 .journeySteps .step:hover,.journeySteps .step:nth-child(2):hover{transform:none!important;box-shadow:none!important}
+/* The colored three-stage flow above already carries this message; hide the repeated closing block on Programs. */
+.materials + .event + .closing{display:none!important}
 
 @media (min-width:901px){
   .journeySteps{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important}
