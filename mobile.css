@@ -21,38 +21,24 @@ img,iframe{max-width:100%}
   .filmBtn{display:inline-flex!important;background:#d3232a!important;color:#fff!important}
 }
 
-/* Interactive journey cards */
-.journeySteps{position:relative;gap:22px!important;margin:42px 0 50px!important}
-.journeySteps:before{content:"";position:absolute;left:9%;right:9%;top:50%;height:3px;background:linear-gradient(90deg,#117f96,#27a3b0,#1ca58d);opacity:.28;z-index:0}
-.journeySteps .step{position:relative;z-index:1;min-height:235px;padding:30px 28px!important;border:0!important;border-radius:30px!important;overflow:hidden;box-shadow:0 18px 42px rgba(18,57,70,.12);transition:transform .35s ease,box-shadow .35s ease,color .35s ease;background:#fff!important;cursor:default}
-.journeySteps .step:before{content:"";position:absolute;width:145px;height:145px;border-radius:50%;right:-55px;top:-55px;background:linear-gradient(135deg,rgba(39,163,176,.16),rgba(28,165,141,.08));transition:transform .4s ease}
-.journeySteps .step:after{content:"→";position:absolute;right:25px;bottom:18px;font-size:2rem;font-weight:900;color:#27a3b0;transition:transform .3s ease,color .3s ease}
-.journeySteps .step b{display:grid!important;place-items:center;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#117f96,#27a3b0);color:#fff!important;font-size:.9rem!important;letter-spacing:0!important;box-shadow:0 8px 18px rgba(17,127,150,.22)}
-.journeySteps .step strong{display:block;font-size:1.7rem!important;line-height:1.05;margin:24px 0 12px!important}
-.journeySteps .step span{display:block;color:#60757c;max-width:90%;line-height:1.55}
-.journeySteps .step:nth-child(2) b{background:linear-gradient(135deg,#27a3b0,#1ca58d)}
-.journeySteps .step:nth-child(3) b{background:linear-gradient(135deg,#1ca58d,#0d6b7d)}
-.journeySteps .step:hover{transform:translateY(-10px);box-shadow:0 28px 58px rgba(18,57,70,.19)}
-.journeySteps .step:hover:before{transform:scale(1.35)}
-.journeySteps .step:hover:after{transform:translateX(7px);color:#1ca58d}
-.journeySteps .step:nth-child(2){transform:translateY(16px)}
-.journeySteps .step:nth-child(2):hover{transform:translateY(6px)}
+/* Program journey: informational flow, deliberately not button-like */
+.journeySteps{position:relative;gap:0!important;margin:42px 0 52px!important;border-radius:32px!important;overflow:hidden;background:linear-gradient(110deg,#0d6b7d 0%,#178da0 34%,#24a5a5 66%,#1ca58d 100%);box-shadow:0 20px 50px rgba(18,57,70,.14)}
+.journeySteps:before{display:none!important}
+.journeySteps .step{position:relative;min-height:225px;padding:32px 30px!important;border:0!important;border-radius:0!important;background:transparent!important;color:#fff!important;box-shadow:none!important;cursor:default!important;transform:none!important;transition:none!important;display:flex;flex-direction:column;justify-content:center}
+.journeySteps .step+.step{border-left:1px solid rgba(255,255,255,.3)!important}
+.journeySteps .step:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.10),transparent 55%);pointer-events:none}
+.journeySteps .step:after{display:none!important}
+.journeySteps .step b{display:block!important;width:auto!important;height:auto!important;border-radius:0!important;background:none!important;color:rgba(255,255,255,.72)!important;font-size:.78rem!important;letter-spacing:.16em!important;box-shadow:none!important;margin-bottom:14px;text-transform:uppercase}
+.journeySteps .step b:before{content:"ЕТАП ";font-weight:700}
+.journeySteps .step strong{display:block;font-size:1.8rem!important;line-height:1.05;margin:0 0 13px!important;color:#fff!important}
+.journeySteps .step span{display:block;color:rgba(255,255,255,.9)!important;max-width:100%!important;line-height:1.55;font-size:1rem}
+.journeySteps .step:hover,.journeySteps .step:nth-child(2):hover{transform:none!important;box-shadow:none!important}
 
-/* Desktop emphasis: make the journey unmistakably visual */
 @media (min-width:901px){
-  .journeySteps{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;align-items:stretch!important;padding:18px 8px 28px!important}
-  .journeySteps:before{left:7%!important;right:7%!important;top:53%!important;height:5px!important;opacity:.32!important;border-radius:999px!important;box-shadow:0 0 24px rgba(39,163,176,.18)}
-  .journeySteps .step{min-height:270px!important;padding:34px 30px 38px!important;border-radius:34px!important;box-shadow:0 20px 48px rgba(18,57,70,.14)!important;isolation:isolate}
-  .journeySteps .step:nth-child(1){background:linear-gradient(145deg,#ffffff 0%,#eef9fb 100%)!important;border-top:5px solid #117f96!important}
-  .journeySteps .step:nth-child(2){background:linear-gradient(145deg,#ffffff 0%,#eefbf7 100%)!important;border-top:5px solid #27a3b0!important;transform:translateY(-14px)!important}
-  .journeySteps .step:nth-child(3){background:linear-gradient(145deg,#ffffff 0%,#effaf6 100%)!important;border-top:5px solid #1ca58d!important}
-  .journeySteps .step:before{width:190px!important;height:190px!important;right:-70px!important;top:-75px!important;opacity:.9}
-  .journeySteps .step b{width:58px!important;height:58px!important;font-size:1rem!important;box-shadow:0 12px 28px rgba(17,127,150,.28)!important}
-  .journeySteps .step strong{font-size:2rem!important;margin:28px 0 14px!important;color:#123946!important}
-  .journeySteps .step span{font-size:1.02rem!important;max-width:86%!important}
-  .journeySteps .step:after{right:26px!important;bottom:18px!important;font-size:2.35rem!important}
-  .journeySteps .step:hover{transform:translateY(-16px) scale(1.025)!important;box-shadow:0 32px 70px rgba(18,57,70,.22)!important}
-  .journeySteps .step:nth-child(2):hover{transform:translateY(-24px) scale(1.025)!important}
+  .journeySteps{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important}
+  .journeySteps .step:nth-child(1){background:linear-gradient(135deg,rgba(6,92,111,.42),rgba(255,255,255,.02))!important}
+  .journeySteps .step:nth-child(2){background:linear-gradient(135deg,rgba(16,150,160,.22),rgba(255,255,255,.04))!important}
+  .journeySteps .step:nth-child(3){background:linear-gradient(135deg,rgba(21,151,119,.26),rgba(255,255,255,.08))!important}
 }
 
 @media (max-width:900px){
@@ -81,12 +67,11 @@ img,iframe{max-width:100%}
   .tile img{height:auto!important;aspect-ratio:16/10}
   .pills{grid-template-columns:1fr!important}
   .panel,.pillar,.fact,.card,.box{min-width:0}
-  .journeySteps{grid-template-columns:1fr!important;gap:14px!important}
-  .journeySteps:before{left:23px;right:auto;top:35px;bottom:35px;width:3px;height:auto}
-  .journeySteps .step,.journeySteps .step:nth-child(2){min-height:190px;transform:none!important;padding:25px 24px 25px 78px!important}
-  .journeySteps .step:hover,.journeySteps .step:nth-child(2):hover{transform:translateY(-4px)!important}
-  .journeySteps .step b{position:absolute;left:17px;top:25px}
-  .journeySteps .step strong{margin-top:4px!important}
+  .journeySteps{grid-template-columns:1fr!important;gap:0!important;border-radius:26px!important}
+  .journeySteps .step,.journeySteps .step:nth-child(2){min-height:0!important;transform:none!important;padding:27px 25px!important}
+  .journeySteps .step+.step{border-left:0!important;border-top:1px solid rgba(255,255,255,.3)!important}
+  .journeySteps .step b{position:static!important;margin-bottom:10px!important}
+  .journeySteps .step strong{margin:0 0 10px!important}
   .daysWrap{grid-template-columns:1fr!important;gap:26px!important}
   .dailyVisual{width:min(320px,100%)!important;margin:auto}
   .event{margin-bottom:22px!important}
@@ -138,10 +123,8 @@ img,iframe{max-width:100%}
   .panel,.pillar,.fact,.tileBody,.card,.box,.body,.film,.next{padding:20px!important}
   .heroArt,.visual,.programImg{padding:14px!important;border-radius:22px!important}
   .quote{font-size:1.1rem!important}
-  .journeySteps .step,.journeySteps .step:nth-child(2){padding:22px 20px 22px 70px!important;border-radius:24px!important;min-height:175px}
-  .journeySteps .step b{left:14px;top:22px;width:44px;height:44px}
+  .journeySteps .step,.journeySteps .step:nth-child(2){padding:24px 21px!important;border-radius:0!important;min-height:0!important}
   .journeySteps .step strong{font-size:1.45rem!important}
-  .journeySteps .step:after{font-size:1.5rem;right:18px;bottom:12px}
   .galleryVisual{padding:8px!important;gap:7px!important}
   .gallery{grid-template-columns:1fr!important}
   .gallery .main{grid-column:auto!important}
