@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ruzheva.github.io/edin-gram-jivot/sitemap.xml
