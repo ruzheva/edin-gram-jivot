@@ -1,18 +1,22 @@
+---
+layout: null
+permalink: /sitemap.xml
+---
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-bg.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-en.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-es.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-fr.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-de.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-ru.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-zh.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-ar.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-pt.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-it.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-tr.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-ro.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-el.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-sr.xml</loc></sitemap>
-  <sitemap><loc>https://ruzheva.github.io/edin-gram-jivot/sitemap-mk.xml</loc></sitemap>
-</sitemapindex>
+{% assign langs = "bg,en,es,fr,de,ru,zh,ar,pt,it,tr,ro,el,sr,mk" | split: "," %}
+{% assign pages = "index.html,our-story.html,programs.html,program-children-parents.html,hobby.html,conferences.html,conference-1.html,conference-2.html,conference-4.html,films.html,film.html,days.html" | split: "," %}
+{% assign base = "https://ruzheva.github.io/edin-gram-jivot/" %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{% for page in pages %}
+  {% for lang in langs %}
+    {% capture current_url %}{% if lang == "bg" %}{% if page == "index.html" %}{{ base }}{% else %}{{ base }}{{ page }}{% endif %}{% else %}{% if page == "index.html" %}{{ base }}{{ lang }}/{% else %}{{ base }}{{ lang }}/{{ page }}{% endif %}{% endif %}{% endcapture %}
+  <url>
+    <loc>{{ current_url | strip }}</loc>
+    {% for alt in langs %}{% capture alt_url %}{% if alt == "bg" %}{% if page == "index.html" %}{{ base }}{% else %}{{ base }}{{ page }}{% endif %}{% else %}{% if page == "index.html" %}{{ base }}{{ alt }}/{% else %}{{ base }}{{ alt }}/{{ page }}{% endif %}{% endif %}{% endcapture %}
+    <xhtml:link rel="alternate" hreflang="{{ alt }}" href="{{ alt_url | strip }}"/>{% endfor %}
+    {% capture default_url %}{% if page == "index.html" %}{{ base }}{% else %}{{ base }}{{ page }}{% endif %}{% endcapture %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ default_url | strip }}"/>
+  </url>
+  {% endfor %}
+{% endfor %}
+</urlset>
