@@ -1,0 +1,49 @@
+name: Add language switcher
+
+on:
+  push:
+    paths:
+      - 'language-switcher.js'
+
+permissions:
+  contents: write
+
+jobs:
+  rollout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add switcher script to all site pages
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          tag = '<script src="/edin-gram-jivot/language-switcher.js" defer></script>'
+          changed = 0
+          for p in Path('.').rglob('*.html'):
+              s = p.read_text(encoding='utf-8')
+              if 'language-switcher.js' in s:
+                  continue
+              if '</head>' in s:
+                  s = s.replace('</head>', tag + '</head>', 1)
+              elif '</body>' in s:
+                  s = s.replace('</body>', tag + '</body>', 1)
+              else:
+                  continue
+              p.write_text(s, encoding='utf-8')
+              changed += 1
+          print(f'Updated {changed} HTML files')
+          PY
+      - name: Commit rollout
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html' */'*.html'
+          if git diff --cached --quiet; then
+            echo 'No HTML changes needed.'
+          else
+            git commit -m 'Add visible 15-language selector to all pages'
+            git push
+          fi
