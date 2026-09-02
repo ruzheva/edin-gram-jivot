@@ -12,7 +12,8 @@
   const localeSet = new Set(languages.map(x => x[0]).filter(x => x !== 'bg'));
   const currentLang = parts.length && localeSet.has(parts[0]) ? parts[0] : 'bg';
   const page = currentLang === 'bg' ? (parts[0] || 'index.html') : (parts[1] || 'index.html');
-  const fullFilmPoster = 'https://www.konkurent.bg/pic/posts/2025-11/17630235146432/gals/orig.jpg?v=4';
+  const fullFilmPoster = 'https://troyanpress.com/wp-content/uploads/2025/11/%D0%95%D0%94%D0%98%D0%9D-%D0%93%D0%A0%D0%90%D0%9C-%D0%96%D0%98%D0%92%D0%9E%D0%A2-HD-LOGA.jpg?v=6';
+  const isDesktop = window.matchMedia('(min-width: 901px)').matches;
 
   const hrefFor = (lang) => {
     if (lang === 'bg') return page === 'index.html' ? base : base + page;
@@ -26,7 +27,7 @@
     const content = hero?.querySelector('.heroContent');
     const poster = hero?.querySelector('.posterWrap');
     const posterImg = poster?.querySelector('img');
-    if (posterImg) posterImg.src = fullFilmPoster;
+    if (posterImg && isDesktop) posterImg.src = fullFilmPoster;
     if (hero && content && poster && !hero.querySelector('.filmHeroShell')) {
       const shell = document.createElement('div');
       shell.className = 'c filmHeroShell';
@@ -38,12 +39,12 @@
 
   if (page === 'films.html') {
     const listingPoster = document.querySelector('.filmsPage .poster img');
-    if (listingPoster) listingPoster.src = fullFilmPoster;
+    if (listingPoster && isDesktop) listingPoster.src = fullFilmPoster;
   }
 
   if (page === 'index.html') {
     const homePoster = document.querySelector('.filmPoster img');
-    if (homePoster) homePoster.src = fullFilmPoster;
+    if (homePoster && isDesktop) homePoster.src = fullFilmPoster;
   }
 
   const style = document.createElement('style');
@@ -72,8 +73,12 @@
     .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:520px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important;box-shadow:none!important}
 
     @media(min-width:901px){
+      .filmHeroShell .posterWrap{overflow:visible!important;height:auto!important;min-height:0!important}
+      .filmHeroShell .poster{width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;transform:none!important;clip-path:none!important}
+      .filmPoster{overflow:visible!important;height:auto!important;min-height:0!important}
+      .filmPoster img{width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;transform:none!important;clip-path:none!important}
       body.filmsPage .poster{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:680px!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:12px!important}
-      body.filmsPage .poster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:620px!important;object-fit:contain!important;object-position:center center!important;transform:none!important;clip-path:none!important;margin:0 auto!important}
+      body.filmsPage .poster img{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;transform:none!important;clip-path:none!important;margin:0 auto!important}
       header nav .links,nav .links{display:flex!important;align-items:center!important;flex-wrap:nowrap!important}
       header nav .links .egl-lang-switcher,nav .links .egl-lang-switcher{display:inline-flex!important;align-items:center!important;height:auto!important;margin:0!important;position:relative!important;top:auto!important;right:auto!important;left:auto!important}
       header nav .links .egl-lang-button,nav .links .egl-lang-button{display:inline-flex!important;align-items:center!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:inherit!important;font-weight:800!important;color:inherit!important;line-height:inherit!important}
@@ -152,7 +157,7 @@
 
   button.addEventListener('click', (e) => { e.stopPropagation(); setOpen(!wrap.classList.contains('open')); });
   document.addEventListener('click', () => setOpen(false));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false));
   menu.addEventListener('click', e => e.stopPropagation());
   window.addEventListener('resize', positionMenu);
   window.addEventListener('scroll', positionMenu, true);
