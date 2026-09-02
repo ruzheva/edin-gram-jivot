@@ -12,7 +12,7 @@
   const localeSet = new Set(languages.map(x => x[0]).filter(x => x !== 'bg'));
   const currentLang = parts.length && localeSet.has(parts[0]) ? parts[0] : 'bg';
   const page = currentLang === 'bg' ? (parts[0] || 'index.html') : (parts[1] || 'index.html');
-  const fullFilmPoster = 'https://troyanpress.com/wp-content/uploads/2025/11/%D0%95%D0%94%D0%98%D0%9D-%D0%93%D0%A0%D0%90%D0%9C-%D0%96%D0%98%D0%92%D0%9E%D0%A2-HD-LOGA.jpg?v=6';
+  const fullFilmPoster = 'https://www.konkurent.bg/pic/posts/2025-11/17630235146432/gals/orig.jpg?v=7';
   const isDesktop = window.matchMedia('(min-width: 901px)').matches;
 
   const hrefFor = (lang) => {
