@@ -1,20 +1,6 @@
 (() => {
   const languages = [
-    ['bg','Български','🇧🇬'],
-    ['en','English','🇬🇧'],
-    ['es','Español','🇪🇸'],
-    ['fr','Français','🇫🇷'],
-    ['de','Deutsch','🇩🇪'],
-    ['ru','Русский','🇷🇺'],
-    ['zh','中文','🇨🇳'],
-    ['ar','العربية','🇸🇦'],
-    ['pt','Português','🇵🇹'],
-    ['it','Italiano','🇮🇹'],
-    ['tr','Türkçe','🇹🇷'],
-    ['ro','Română','🇷🇴'],
-    ['el','Ελληνικά','🇬🇷'],
-    ['sr','Српски','🇷🇸'],
-    ['mk','Македонски','🇲🇰']
+    ['bg','Български','🇧🇬'],['en','English','🇬🇧'],['es','Español','🇪🇸'],['fr','Français','🇫🇷'],['de','Deutsch','🇩🇪'],['ru','Русский','🇷🇺'],['zh','中文','🇨🇳'],['ar','العربية','🇸🇦'],['pt','Português','🇵🇹'],['it','Italiano','🇮🇹'],['tr','Türkçe','🇹🇷'],['ro','Română','🇷🇴'],['el','Ελληνικά','🇬🇷'],['sr','Српски','🇷🇸'],['mk','Македонски','🇲🇰']
   ];
 
   const base = '/edin-gram-jivot/';
@@ -34,6 +20,26 @@
 
   const current = languages.find(x => x[0] === currentLang) || languages[0];
 
+  /* Rebuild the film hero as two real columns so text and artwork never overlap. */
+  if (page === 'film.html') {
+    const hero = document.querySelector('.hero');
+    const content = hero?.querySelector('.heroContent');
+    const poster = hero?.querySelector('.posterWrap');
+    if (hero && content && poster && !hero.querySelector('.filmHeroShell')) {
+      const shell = document.createElement('div');
+      shell.className = 'c filmHeroShell';
+      hero.insertBefore(shell, hero.firstChild);
+      shell.appendChild(content);
+      shell.appendChild(poster);
+    }
+  }
+
+  /* Homepage uses the same local artwork as the dedicated film page. */
+  if (page === 'index.html') {
+    const homePoster = document.querySelector('.filmPoster img');
+    if (homePoster) homePoster.src = new URL('филм 01.jpg', document.baseURI).href;
+  }
+
   const style = document.createElement('style');
   style.textContent = `
     .egl-lang-switcher{position:relative;flex:0 0 auto;z-index:9999;font-family:inherit;display:inline-flex;align-items:center;align-self:center}
@@ -49,18 +55,23 @@
     .egl-lang-switcher-fallback{position:fixed;top:88px;right:18px;background:#fff;padding:9px 12px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
     html[dir="rtl"] .egl-lang-switcher-fallback{right:auto;left:18px}
 
-    /* Film artwork: true centering and full image visibility */
-    .posterWrap{display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;overflow:hidden!important}
-    .posterWrap .poster{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important;margin:auto!important}
-    .filmPoster{display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;padding:18px!important;background:#050b0e!important;border-radius:24px!important}
-    .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:560px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:18px!important}
+    /* Dedicated film page: true two-column hero */
+    body .hero{min-height:0!important;display:block!important;align-items:initial!important;overflow:hidden!important;padding:0!important}
+    body .hero:before{z-index:0!important;background:linear-gradient(90deg,#050b0ef8 0%,#071216ee 43%,#071216b8 70%,#0712169c 100%)!important}
+    .filmHeroShell{position:relative!important;z-index:2!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(420px,.95fr)!important;gap:54px!important;align-items:center!important;min-height:650px!important;padding:54px 0 64px!important}
+    .filmHeroShell .heroContent{position:relative!important;z-index:2!important;width:auto!important;max-width:620px!important;margin:0!important;padding:0!important}
+    .filmHeroShell .posterWrap{position:relative!important;z-index:2!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%!important;height:auto!important;min-height:0!important;padding:12px!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border-radius:24px!important;background:#050b0e!important;box-shadow:0 24px 60px #0009!important}
+    .filmHeroShell .poster{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important}
+
+    /* Homepage film card: same centered, fully visible artwork */
+    .filmPoster{display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;padding:12px!important;background:#050b0e!important;border-radius:24px!important;overflow:hidden!important}
+    .filmPoster img{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;max-height:560px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important;box-shadow:none!important}
 
     @media(min-width:901px){
-      header nav .links, nav .links{display:flex!important;align-items:center!important;flex-wrap:nowrap!important}
-      header nav .links .egl-lang-switcher, nav .links .egl-lang-switcher{display:inline-flex!important;align-items:center!important;height:auto!important;margin:0!important;position:relative!important;top:auto!important;right:auto!important;left:auto!important}
-      header nav .links .egl-lang-button, nav .links .egl-lang-button{display:inline-flex!important;align-items:center!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:inherit!important;font-weight:800!important;color:inherit!important;line-height:inherit!important}
+      header nav .links,nav .links{display:flex!important;align-items:center!important;flex-wrap:nowrap!important}
+      header nav .links .egl-lang-switcher,nav .links .egl-lang-switcher{display:inline-flex!important;align-items:center!important;height:auto!important;margin:0!important;position:relative!important;top:auto!important;right:auto!important;left:auto!important}
+      header nav .links .egl-lang-button,nav .links .egl-lang-button{display:inline-flex!important;align-items:center!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:inherit!important;font-weight:800!important;color:inherit!important;line-height:inherit!important}
       .egl-lang-label{display:inline!important}
-      .posterWrap{left:auto!important;right:0!important;top:0!important;bottom:0!important;width:50%!important;padding:28px!important;transform:none!important}
     }
 
     @media(max-width:900px){
@@ -68,26 +79,26 @@
       .egl-lang-button{min-height:44px;padding:9px 13px;border:1px solid rgba(12,129,146,.25);border-radius:999px;background:#fff;color:#173d45;font-size:.82rem}
       .egl-lang-button:hover,.egl-lang-button:focus{background:#eefafa}
       .egl-lang-label{display:inline}
-      .posterWrap{left:50%!important;right:auto!important;width:calc(100% - 32px)!important;top:24px!important;bottom:165px!important;transform:translateX(-50%)!important;padding:18px!important}
-      .filmPoster{width:min(620px,100%)!important;margin-left:auto!important;margin-right:auto!important;padding:14px!important}
-      .filmPoster img{max-width:100%!important;max-height:72vh!important}
+      .filmHeroShell{grid-template-columns:1fr!important;gap:26px!important;min-height:0!important;padding:42px 0 52px!important}
+      .filmHeroShell .heroContent{max-width:680px!important;padding:0!important}
+      .filmHeroShell .posterWrap{width:min(680px,100%)!important;margin:0 auto!important;padding:10px!important;opacity:1!important}
+      .filmHeroShell .poster{width:100%!important;height:auto!important;max-height:none!important}
+      .filmPoster{width:min(620px,100%)!important;margin-left:auto!important;margin-right:auto!important;padding:10px!important}
+      .filmPoster img{max-height:none!important}
     }
+
     @media(max-width:600px){
       .egl-lang-button{padding:8px 11px;font-size:.8rem}
       .egl-lang-label{display:none}
-      .posterWrap{left:50%!important;right:auto!important;width:calc(100% - 24px)!important;top:16px!important;bottom:175px!important;transform:translateX(-50%)!important;padding:12px!important;border-radius:20px!important}
-      .posterWrap .poster{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important}
-      .filmPoster{width:100%!important;margin:0 auto!important;padding:10px!important}
-      .filmPoster img{width:auto!important;height:auto!important;max-width:100%!important;max-height:70vh!important;object-fit:contain!important;object-position:center center!important;margin:auto!important}
+      .filmHeroShell{padding:28px 0 38px!important;gap:22px!important}
+      .filmHeroShell .heroContent{padding:0!important}
+      .filmHeroShell .posterWrap{width:100%!important;padding:8px!important;border-radius:18px!important}
+      .filmHeroShell .poster{border-radius:12px!important}
+      .filmPoster{width:100%!important;margin:0 auto!important;padding:8px!important;border-radius:18px!important}
+      .filmPoster img{width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:12px!important}
     }
   `;
   document.head.appendChild(style);
-
-  /* Use the same local film artwork on the homepage so both sections match. */
-  if (page === 'index.html') {
-    const homePoster = document.querySelector('.filmPoster img');
-    if (homePoster) homePoster.src = new URL('филм 01.jpg', document.baseURI).href;
-  }
 
   const wrap = document.createElement('div');
   wrap.className = 'egl-lang-switcher';
@@ -110,12 +121,8 @@
   }
 
   const navLinks = document.querySelector('header nav .links') || document.querySelector('nav .links');
-  if (navLinks) {
-    navLinks.appendChild(wrap);
-  } else {
-    wrap.classList.add('egl-lang-switcher-fallback');
-    document.body.appendChild(wrap);
-  }
+  if (navLinks) navLinks.appendChild(wrap);
+  else { wrap.classList.add('egl-lang-switcher-fallback'); document.body.appendChild(wrap); }
 
   const button = wrap.querySelector('.egl-lang-button');
   const positionMenu = () => {
@@ -124,11 +131,8 @@
     const menuWidth = menu.offsetWidth || 215;
     const margin = 8;
     let left;
-    if (document.documentElement.dir === 'rtl') {
-      left = Math.max(margin, Math.min(rect.left, window.innerWidth - menuWidth - margin));
-    } else {
-      left = Math.max(margin, Math.min(rect.right - menuWidth, window.innerWidth - menuWidth - margin));
-    }
+    if (document.documentElement.dir === 'rtl') left = Math.max(margin, Math.min(rect.left, window.innerWidth - menuWidth - margin));
+    else left = Math.max(margin, Math.min(rect.right - menuWidth, window.innerWidth - menuWidth - margin));
     menu.style.left = `${left}px`;
     menu.style.right = 'auto';
     menu.style.top = `${Math.min(rect.bottom + 8, window.innerHeight - 60)}px`;
@@ -140,10 +144,7 @@
     if (open) requestAnimationFrame(positionMenu);
   };
 
-  button.addEventListener('click', (e) => {
-    e.stopPropagation();
-    setOpen(!wrap.classList.contains('open'));
-  });
+  button.addEventListener('click', (e) => { e.stopPropagation(); setOpen(!wrap.classList.contains('open')); });
   document.addEventListener('click', () => setOpen(false));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
   menu.addEventListener('click', e => e.stopPropagation());
