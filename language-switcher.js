@@ -27,7 +27,7 @@
     const content = hero?.querySelector('.heroContent');
     const poster = hero?.querySelector('.posterWrap');
     const posterImg = poster?.querySelector('img');
-    if (posterImg && isDesktop) posterImg.src = fullFilmPoster;
+    if (posterImg) posterImg.src = new URL('филм 01.jpg', document.baseURI).href;
     if (hero && content && poster && !hero.querySelector('.filmHeroShell')) {
       const shell = document.createElement('div');
       shell.className = 'c filmHeroShell';
@@ -39,7 +39,7 @@
 
   if (page === 'films.html') {
     const listingPoster = document.querySelector('.filmsPage .poster img');
-    if (listingPoster && isDesktop) listingPoster.src = fullFilmPoster;
+    if (listingPoster) listingPoster.src = new URL('филм 01.jpg', document.baseURI).href;
   }
 
   if (page === 'index.html') {
