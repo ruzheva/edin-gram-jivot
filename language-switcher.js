@@ -25,9 +25,7 @@
   const parts = rest ? rest.split('/') : [];
   const localeSet = new Set(languages.map(x => x[0]).filter(x => x !== 'bg'));
   const currentLang = parts.length && localeSet.has(parts[0]) ? parts[0] : 'bg';
-  const page = currentLang === 'bg'
-    ? (parts[0] || 'index.html')
-    : (parts[1] || 'index.html');
+  const page = currentLang === 'bg' ? (parts[0] || 'index.html') : (parts[1] || 'index.html');
 
   const hrefFor = (lang) => {
     if (lang === 'bg') return page === 'index.html' ? base : base + page;
@@ -38,9 +36,9 @@
 
   const style = document.createElement('style');
   style.textContent = `
-    .egl-lang-switcher{position:relative;flex:0 0 auto;z-index:9999;font-family:inherit;display:flex;align-items:center}
-    .egl-lang-button{min-height:38px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid rgba(12,129,146,.25);background:#fff;color:#173d45;padding:8px 12px;border-radius:999px;font:inherit;font-size:.86rem;font-weight:800;cursor:pointer;line-height:1;white-space:nowrap}
-    .egl-lang-button:hover,.egl-lang-button:focus{outline:none;border-color:#0c8192;background:#eefafa}
+    .egl-lang-switcher{position:relative;flex:0 0 auto;z-index:9999;font-family:inherit;display:inline-flex;align-items:center;align-self:center}
+    .egl-lang-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;background:transparent;color:inherit;padding:0;font:inherit;font-weight:800;cursor:pointer;line-height:1.2;white-space:nowrap}
+    .egl-lang-button:hover,.egl-lang-button:focus{outline:none;color:#0c8192}
     .egl-lang-menu{display:none;position:fixed;z-index:10000;width:215px;max-height:min(70vh,520px);overflow:auto;background:#fff;border:1px solid #d8ecec;border-radius:16px;padding:7px;box-shadow:0 16px 40px rgba(0,0,0,.18)}
     .egl-lang-switcher.open .egl-lang-menu{display:block}
     .egl-lang-menu a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:#173d45;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap}
@@ -48,11 +46,20 @@
     .egl-lang-menu a[aria-current="page"]{background:#e3f7f3;color:#087a8c}
     .egl-lang-code{margin-left:auto;color:#61777c;font-size:11px;text-transform:uppercase}
     html[dir="rtl"] .egl-lang-code{margin-left:0;margin-right:auto}
-    .egl-lang-switcher-fallback{position:fixed;top:88px;right:18px}
+    .egl-lang-switcher-fallback{position:fixed;top:88px;right:18px;background:#fff;padding:9px 12px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
     html[dir="rtl"] .egl-lang-switcher-fallback{right:auto;left:18px}
+
+    @media(min-width:901px){
+      header nav .links, nav .links{display:flex!important;align-items:center!important;flex-wrap:nowrap!important}
+      header nav .links .egl-lang-switcher, nav .links .egl-lang-switcher{display:inline-flex!important;align-items:center!important;height:auto!important;margin:0!important;position:relative!important;top:auto!important;right:auto!important;left:auto!important}
+      header nav .links .egl-lang-button, nav .links .egl-lang-button{display:inline-flex!important;align-items:center!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:inherit!important;font-weight:800!important;color:inherit!important;line-height:inherit!important}
+      .egl-lang-label{display:inline!important}
+    }
+
     @media(max-width:900px){
       .egl-lang-switcher{min-height:44px}
-      .egl-lang-button{min-height:44px;padding:9px 13px;font-size:.82rem}
+      .egl-lang-button{min-height:44px;padding:9px 13px;border:1px solid rgba(12,129,146,.25);border-radius:999px;background:#fff;color:#173d45;font-size:.82rem}
+      .egl-lang-button:hover,.egl-lang-button:focus{background:#eefafa}
       .egl-lang-label{display:inline}
     }
     @media(max-width:600px){
