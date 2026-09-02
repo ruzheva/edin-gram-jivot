@@ -3,9 +3,9 @@
     ['bg','Български','🇧🇬'],['en','English','🇬🇧'],['es','Español','🇪🇸'],['fr','Français','🇫🇷'],['de','Deutsch','🇩🇪'],['ru','Русский','🇷🇺'],['zh','中文','🇨🇳'],['ar','العربية','🇸🇦'],['pt','Português','🇵🇹'],['it','Italiano','🇮🇹'],['tr','Türkçe','🇹🇷'],['ro','Română','🇷🇴'],['el','Ελληνικά','🇬🇷'],['sr','Српски','🇷🇸'],['mk','Македонски','🇲🇰']
   ];
 
-  const base = '/edin-gram-jivot/';
+  const repoBase = '/edin-gram-jivot/';
   const path = window.location.pathname;
-  if (!path.startsWith(base)) return;
+  const base = path.startsWith(repoBase) ? repoBase : '/';
 
   const rest = path.slice(base.length).replace(/^\/+|\/+$/g, '');
   const parts = rest ? rest.split('/') : [];
@@ -76,9 +76,9 @@
       .egl-lang-button:hover,.egl-lang-button:focus{background:#eefafa}
       .egl-lang-label{display:inline}
       .filmHeroShell{grid-template-columns:1fr!important;gap:24px!important;min-height:0!important;padding:36px 0 44px!important}
-      .filmHeroShell .heroContent{max-width:680px!important;padding:0!important}
-      .filmHeroShell .posterWrap{width:min(520px,100%)!important;margin:0 auto!important;padding:8px!important;opacity:1!important}
-      .filmHeroShell .poster{width:auto!important;height:auto!important;max-width:100%!important;max-height:430px!important}
+      .filmHeroShell .posterWrap{order:-1!important;width:min(520px,100%)!important;margin:0 auto!important;padding:8px!important;opacity:1!important}
+      .filmHeroShell .poster{width:auto!important;height:auto!important;max-width:100%!important;max-height:430px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important}
+      .filmHeroShell .heroContent{max-width:680px!important;padding:0!important;margin:0 auto!important;width:100%!important}
       .filmPoster{width:min(520px,100%)!important;margin-left:auto!important;margin-right:auto!important;padding:8px!important}
       .filmPoster img{width:auto!important;height:auto!important;max-width:100%!important;max-height:430px!important}
     }
@@ -87,11 +87,11 @@
       .egl-lang-button{padding:8px 11px;font-size:.8rem}
       .egl-lang-label{display:none}
       .filmHeroShell{padding:26px 0 36px!important;gap:20px!important}
-      .filmHeroShell .heroContent{padding:0!important;width:100%!important;max-width:none!important}
-      .filmHeroShell .posterWrap{width:min(400px,100%)!important;padding:6px!important;border-radius:16px!important}
-      .filmHeroShell .poster{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:11px!important}
+      .filmHeroShell .posterWrap{order:-1!important;width:100%!important;max-width:400px!important;margin:0 auto!important;padding:6px!important;border-radius:16px!important;opacity:1!important}
+      .filmHeroShell .poster{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:11px!important}
+      .filmHeroShell .heroContent{padding:0!important;width:100%!important;max-width:none!important;margin:0!important}
       .filmPoster{width:min(400px,100%)!important;margin:0 auto!important;padding:6px!important;border-radius:16px!important}
-      .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:11px!important}
+      .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:11px!important}
     }
   `;
   document.head.appendChild(style);
