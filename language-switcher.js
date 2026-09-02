@@ -157,7 +157,7 @@
 
   button.addEventListener('click', (e) => { e.stopPropagation(); setOpen(!wrap.classList.contains('open')); });
   document.addEventListener('click', () => setOpen(false));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
   menu.addEventListener('click', e => e.stopPropagation());
   window.addEventListener('resize', positionMenu);
   window.addEventListener('scroll', positionMenu, true);
