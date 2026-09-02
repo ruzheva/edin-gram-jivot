@@ -12,6 +12,7 @@
   const localeSet = new Set(languages.map(x => x[0]).filter(x => x !== 'bg'));
   const currentLang = parts.length && localeSet.has(parts[0]) ? parts[0] : 'bg';
   const page = currentLang === 'bg' ? (parts[0] || 'index.html') : (parts[1] || 'index.html');
+  const fullFilmPoster = 'https://www.konkurent.bg/pic/posts/2025-11/17630235146432/gals/orig.jpg?v=4';
 
   const hrefFor = (lang) => {
     if (lang === 'bg') return page === 'index.html' ? base : base + page;
@@ -24,6 +25,8 @@
     const hero = document.querySelector('.hero');
     const content = hero?.querySelector('.heroContent');
     const poster = hero?.querySelector('.posterWrap');
+    const posterImg = poster?.querySelector('img');
+    if (posterImg) posterImg.src = fullFilmPoster;
     if (hero && content && poster && !hero.querySelector('.filmHeroShell')) {
       const shell = document.createElement('div');
       shell.className = 'c filmHeroShell';
@@ -33,9 +36,14 @@
     }
   }
 
+  if (page === 'films.html') {
+    const listingPoster = document.querySelector('.filmsPage .poster img');
+    if (listingPoster) listingPoster.src = fullFilmPoster;
+  }
+
   if (page === 'index.html') {
     const homePoster = document.querySelector('.filmPoster img');
-    if (homePoster) homePoster.src = new URL('филм 01.jpg', document.baseURI).href;
+    if (homePoster) homePoster.src = fullFilmPoster;
   }
 
   const style = document.createElement('style');
@@ -64,6 +72,8 @@
     .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:520px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important;box-shadow:none!important}
 
     @media(min-width:901px){
+      body.filmsPage .poster{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:680px!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:12px!important}
+      body.filmsPage .poster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:620px!important;object-fit:contain!important;object-position:center center!important;transform:none!important;clip-path:none!important;margin:0 auto!important}
       header nav .links,nav .links{display:flex!important;align-items:center!important;flex-wrap:nowrap!important}
       header nav .links .egl-lang-switcher,nav .links .egl-lang-switcher{display:inline-flex!important;align-items:center!important;height:auto!important;margin:0!important;position:relative!important;top:auto!important;right:auto!important;left:auto!important}
       header nav .links .egl-lang-button,nav .links .egl-lang-button{display:inline-flex!important;align-items:center!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:inherit!important;font-weight:800!important;color:inherit!important;line-height:inherit!important}
