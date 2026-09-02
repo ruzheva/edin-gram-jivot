@@ -49,18 +49,18 @@
     .egl-lang-switcher-fallback{position:fixed;top:88px;right:18px;background:#fff;padding:9px 12px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
     html[dir="rtl"] .egl-lang-switcher-fallback{right:auto;left:18px}
 
-    /* Film artwork: always centered and fully visible */
-    .posterWrap{display:flex!important;align-items:center!important;justify-content:center!important;padding:28px!important;overflow:hidden!important}
+    /* Film artwork: true centering and full image visibility */
+    .posterWrap{display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;overflow:hidden!important}
     .posterWrap .poster{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important;margin:auto!important}
-    .filmPoster{display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important}
-    .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:580px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important}
+    .filmPoster{display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;padding:18px!important;background:#050b0e!important;border-radius:24px!important}
+    .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:560px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:18px!important}
 
     @media(min-width:901px){
       header nav .links, nav .links{display:flex!important;align-items:center!important;flex-wrap:nowrap!important}
       header nav .links .egl-lang-switcher, nav .links .egl-lang-switcher{display:inline-flex!important;align-items:center!important;height:auto!important;margin:0!important;position:relative!important;top:auto!important;right:auto!important;left:auto!important}
       header nav .links .egl-lang-button, nav .links .egl-lang-button{display:inline-flex!important;align-items:center!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:inherit!important;font-weight:800!important;color:inherit!important;line-height:inherit!important}
       .egl-lang-label{display:inline!important}
-      .posterWrap{right:2%!important;left:auto!important;top:28px!important;bottom:28px!important;width:48%!important}
+      .posterWrap{left:auto!important;right:0!important;top:0!important;bottom:0!important;width:50%!important;padding:28px!important;transform:none!important}
     }
 
     @media(max-width:900px){
@@ -68,19 +68,26 @@
       .egl-lang-button{min-height:44px;padding:9px 13px;border:1px solid rgba(12,129,146,.25);border-radius:999px;background:#fff;color:#173d45;font-size:.82rem}
       .egl-lang-button:hover,.egl-lang-button:focus{background:#eefafa}
       .egl-lang-label{display:inline}
-      .posterWrap{left:42%!important;right:4%!important;top:28px!important;bottom:150px!important;width:auto!important;padding:16px!important}
-      .filmPoster{width:100%!important;max-width:620px!important;margin-left:auto!important;margin-right:auto!important}
-      .filmPoster img{max-height:70vh!important}
+      .posterWrap{left:50%!important;right:auto!important;width:calc(100% - 32px)!important;top:24px!important;bottom:165px!important;transform:translateX(-50%)!important;padding:18px!important}
+      .filmPoster{width:min(620px,100%)!important;margin-left:auto!important;margin-right:auto!important;padding:14px!important}
+      .filmPoster img{max-width:100%!important;max-height:72vh!important}
     }
     @media(max-width:600px){
       .egl-lang-button{padding:8px 11px;font-size:.8rem}
       .egl-lang-label{display:none}
-      .posterWrap{left:30%!important;right:2%!important;top:18px!important;bottom:155px!important;padding:10px!important}
-      .posterWrap .poster{object-position:center center!important}
-      .filmPoster img{max-height:65vh!important}
+      .posterWrap{left:50%!important;right:auto!important;width:calc(100% - 24px)!important;top:16px!important;bottom:175px!important;transform:translateX(-50%)!important;padding:12px!important;border-radius:20px!important}
+      .posterWrap .poster{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important}
+      .filmPoster{width:100%!important;margin:0 auto!important;padding:10px!important}
+      .filmPoster img{width:auto!important;height:auto!important;max-width:100%!important;max-height:70vh!important;object-fit:contain!important;object-position:center center!important;margin:auto!important}
     }
   `;
   document.head.appendChild(style);
+
+  /* Use the same local film artwork on the homepage so both sections match. */
+  if (page === 'index.html') {
+    const homePoster = document.querySelector('.filmPoster img');
+    if (homePoster) homePoster.src = new URL('филм 01.jpg', document.baseURI).href;
+  }
 
   const wrap = document.createElement('div');
   wrap.className = 'egl-lang-switcher';
