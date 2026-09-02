@@ -20,7 +20,6 @@
 
   const current = languages.find(x => x[0] === currentLang) || languages[0];
 
-  /* Rebuild the film hero as two real columns so text and artwork never overlap. */
   if (page === 'film.html') {
     const hero = document.querySelector('.hero');
     const content = hero?.querySelector('.heroContent');
@@ -34,7 +33,6 @@
     }
   }
 
-  /* Homepage uses the same local artwork as the dedicated film page. */
   if (page === 'index.html') {
     const homePoster = document.querySelector('.filmPoster img');
     if (homePoster) homePoster.src = new URL('филм 01.jpg', document.baseURI).href;
@@ -55,17 +53,15 @@
     .egl-lang-switcher-fallback{position:fixed;top:88px;right:18px;background:#fff;padding:9px 12px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
     html[dir="rtl"] .egl-lang-switcher-fallback{right:auto;left:18px}
 
-    /* Dedicated film page: true two-column hero */
     body .hero{min-height:0!important;display:block!important;align-items:initial!important;overflow:hidden!important;padding:0!important}
     body .hero:before{z-index:0!important;background:linear-gradient(90deg,#050b0ef8 0%,#071216ee 43%,#071216b8 70%,#0712169c 100%)!important}
     .filmHeroShell{position:relative!important;z-index:2!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(420px,.95fr)!important;gap:54px!important;align-items:center!important;min-height:650px!important;padding:54px 0 64px!important}
     .filmHeroShell .heroContent{position:relative!important;z-index:2!important;width:auto!important;max-width:620px!important;margin:0!important;padding:0!important}
-    .filmHeroShell .posterWrap{position:relative!important;z-index:2!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%!important;height:auto!important;min-height:0!important;padding:12px!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border-radius:24px!important;background:#050b0e!important;box-shadow:0 24px 60px #0009!important}
-    .filmHeroShell .poster{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important}
+    .filmHeroShell .posterWrap{position:relative!important;z-index:2!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%!important;height:auto!important;min-height:0!important;padding:12px!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border-radius:24px!important;background:#050b0e!important;box-shadow:0 24px 60px #0009!important;opacity:1!important}
+    .filmHeroShell .poster{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:520px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important}
 
-    /* Homepage film card: same centered, fully visible artwork */
     .filmPoster{display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;padding:12px!important;background:#050b0e!important;border-radius:24px!important;overflow:hidden!important}
-    .filmPoster img{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;max-height:560px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important;box-shadow:none!important}
+    .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:520px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:16px!important;box-shadow:none!important}
 
     @media(min-width:901px){
       header nav .links,nav .links{display:flex!important;align-items:center!important;flex-wrap:nowrap!important}
@@ -79,23 +75,23 @@
       .egl-lang-button{min-height:44px;padding:9px 13px;border:1px solid rgba(12,129,146,.25);border-radius:999px;background:#fff;color:#173d45;font-size:.82rem}
       .egl-lang-button:hover,.egl-lang-button:focus{background:#eefafa}
       .egl-lang-label{display:inline}
-      .filmHeroShell{grid-template-columns:1fr!important;gap:26px!important;min-height:0!important;padding:42px 0 52px!important}
+      .filmHeroShell{grid-template-columns:1fr!important;gap:24px!important;min-height:0!important;padding:36px 0 44px!important}
       .filmHeroShell .heroContent{max-width:680px!important;padding:0!important}
-      .filmHeroShell .posterWrap{width:min(680px,100%)!important;margin:0 auto!important;padding:10px!important;opacity:1!important}
-      .filmHeroShell .poster{width:100%!important;height:auto!important;max-height:none!important}
-      .filmPoster{width:min(620px,100%)!important;margin-left:auto!important;margin-right:auto!important;padding:10px!important}
-      .filmPoster img{max-height:none!important}
+      .filmHeroShell .posterWrap{width:min(520px,100%)!important;margin:0 auto!important;padding:8px!important;opacity:1!important}
+      .filmHeroShell .poster{width:auto!important;height:auto!important;max-width:100%!important;max-height:430px!important}
+      .filmPoster{width:min(520px,100%)!important;margin-left:auto!important;margin-right:auto!important;padding:8px!important}
+      .filmPoster img{width:auto!important;height:auto!important;max-width:100%!important;max-height:430px!important}
     }
 
     @media(max-width:600px){
       .egl-lang-button{padding:8px 11px;font-size:.8rem}
       .egl-lang-label{display:none}
-      .filmHeroShell{padding:28px 0 38px!important;gap:22px!important}
-      .filmHeroShell .heroContent{padding:0!important}
-      .filmHeroShell .posterWrap{width:100%!important;padding:8px!important;border-radius:18px!important}
-      .filmHeroShell .poster{border-radius:12px!important}
-      .filmPoster{width:100%!important;margin:0 auto!important;padding:8px!important;border-radius:18px!important}
-      .filmPoster img{width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:12px!important}
+      .filmHeroShell{padding:26px 0 36px!important;gap:20px!important}
+      .filmHeroShell .heroContent{padding:0!important;width:100%!important;max-width:none!important}
+      .filmHeroShell .posterWrap{width:min(400px,100%)!important;padding:6px!important;border-radius:16px!important}
+      .filmHeroShell .poster{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:11px!important}
+      .filmPoster{width:min(400px,100%)!important;margin:0 auto!important;padding:6px!important;border-radius:16px!important}
+      .filmPoster img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:360px!important;object-fit:contain!important;object-position:center center!important;margin:auto!important;border-radius:11px!important}
     }
   `;
   document.head.appendChild(style);
