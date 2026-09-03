@@ -1,0 +1,32 @@
+name: Fix homepage hero desktop
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-home-hero-desktop.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Keep full original hero visible on desktop
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          marker='</style><link rel="stylesheet" href="mobile.css">'
+          css='@media(min-width:901px){.heroVisual img{border-radius:28px!important;object-fit:contain!important;object-position:center!important}}'
+          if css not in s:
+              s=s.replace(marker, css+marker, 1)
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Show full homepage hero logo on desktop"
+          git push
