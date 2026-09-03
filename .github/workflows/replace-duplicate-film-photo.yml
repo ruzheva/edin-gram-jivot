@@ -1,0 +1,48 @@
+name: Replace duplicate film photo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/replace-duplicate-film-photo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  replace-photo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace repeated image in film pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          files = [Path('film.html')] + sorted(Path('.').glob('*/film.html'))
+          changed = []
+          for path in files:
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              new = text.replace('src="филм 6.jpg"', 'src="филм 8.jpg"')
+              new = new.replace('src="../филм 6.jpg"', 'src="../филм 8.jpg"')
+              if new != text:
+                  path.write_text(new, encoding='utf-8')
+                  changed.append(str(path))
+          print('Changed:', ', '.join(changed) if changed else 'none')
+          PY
+      - name: Commit changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add film.html */film.html
+          git commit -m "Replace repeated behind-the-scenes film image"
+          git push
