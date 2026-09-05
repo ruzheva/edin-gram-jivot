@@ -45,11 +45,11 @@
     });
 
     const galleryCaptions = [
-      'ЛОКАЦИЯ · декор от снимачния процес',
-      'КАДЪР ОТ ФИЛМА',
-      'ЗАД КАДЪР · подготовка за снимки',
-      'ЕКИПЪТ · снимачният процес',
-      'ЗАД КАДЪР · изграждане на декора'
+      'МЕЖДУНАРОДНО ТУРНЕ · Чикаго',
+      'ЗАД КАДЪР · подготовка на декора',
+      'ЗАД КАДЪР · снимачният процес',
+      'ЕКИПЪТ · премиера на филма',
+      'КАДЪР ОТ ФИЛМА'
     ];
     document.querySelectorAll('.filmGallery .shot figcaption').forEach((caption, index) => {
       if (galleryCaptions[index]) caption.textContent = galleryCaptions[index];
