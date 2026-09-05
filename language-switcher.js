@@ -26,6 +26,24 @@
     const poster = hero?.querySelector('.posterWrap');
     const posterImg = poster?.querySelector('img');
     if (posterImg) posterImg.src = fullFilmPoster;
+
+    const filmImageUpgrades = {
+      'филм.jpg': 'филм.png',
+      'филм 2.jpg': 'филм 22.png',
+      'филм 3.jpg': 'филм 33.png',
+      'филм 7.jpg': 'филм 77.png',
+      'филм 8.jpg': 'филм 88.png',
+      'филм 9.jpg': 'филм 99.png',
+      'филм 11.jpg': 'филм 111.png',
+      'филм 13.jpg': 'филм 133.png'
+    };
+    document.querySelectorAll('img').forEach((img) => {
+      const rawSrc = img.getAttribute('src') || '';
+      const fileName = decodeURIComponent(rawSrc.split('/').pop() || '');
+      const upgraded = filmImageUpgrades[fileName];
+      if (upgraded) img.src = new URL(upgraded, document.baseURI).href;
+    });
+
     if (hero && content && poster && !hero.querySelector('.filmHeroShell')) {
       const shell = document.createElement('div');
       shell.className = 'c filmHeroShell';
