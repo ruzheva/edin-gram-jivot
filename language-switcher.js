@@ -43,6 +43,8 @@
       const upgraded = filmImageUpgrades[fileName];
       if (upgraded) img.src = new URL(upgraded, document.baseURI).href;
     });
+    const tourImg = document.querySelector('.tour .tourPhoto img');
+    if (tourImg) tourImg.src = new URL('филм.png', document.baseURI).href;
 
     if (hero && content && poster && !hero.querySelector('.filmHeroShell')) {
       const shell = document.createElement('div');
