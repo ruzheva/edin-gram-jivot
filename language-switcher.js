@@ -43,6 +43,18 @@
       const upgraded = filmImageUpgrades[fileName];
       if (upgraded) img.src = new URL(upgraded, document.baseURI).href;
     });
+
+    const galleryCaptions = [
+      'ЛОКАЦИЯ · декор от снимачния процес',
+      'КАДЪР ОТ ФИЛМА',
+      'ЗАД КАДЪР · подготовка за снимки',
+      'ЕКИПЪТ · снимачният процес',
+      'ЗАД КАДЪР · изграждане на декора'
+    ];
+    document.querySelectorAll('.filmGallery .shot figcaption').forEach((caption, index) => {
+      if (galleryCaptions[index]) caption.textContent = galleryCaptions[index];
+    });
+
     const tourImg = document.querySelector('.tour .tourPhoto img');
     if (tourImg) tourImg.src = new URL('филм.png', document.baseURI).href;
 
