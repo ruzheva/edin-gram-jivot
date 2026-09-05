@@ -44,6 +44,9 @@
       if (upgraded) img.src = new URL(upgraded, document.baseURI).href;
     });
 
+    const storyImg = document.querySelector('.storyVisual img');
+    if (storyImg) storyImg.src = new URL('филм 5.png', document.baseURI).href;
+
     const galleryCaptions = [
       'МЕЖДУНАРОДНО ТУРНЕ · Чикаго',
       'ЗАД КАДЪР · подготовка на декора',
