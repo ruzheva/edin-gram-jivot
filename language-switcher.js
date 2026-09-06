@@ -45,7 +45,7 @@
     });
 
     const storyImg = document.querySelector('.storyVisual img');
-    if (storyImg) storyImg.src = new URL('филм 5.png', document.baseURI).href;
+    if (storyImg) storyImg.src = new URL('филм 5.jpg', document.baseURI).href;
 
     const galleryCaptions = [
       'МЕЖДУНАРОДНО ТУРНЕ · Чикаго',
