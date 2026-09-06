@@ -45,7 +45,7 @@
     });
 
     const storyImg = document.querySelector('.storyVisual img');
-    if (storyImg) storyImg.src = new URL('0afd6c53-542d-4933-b7f3-b9fc15080c4b.png?v=1', document.baseURI).href;
+    if (storyImg) storyImg.src = new URL('филм 55.png?v=2', document.baseURI).href;
 
     const galleryCaptions = [
       'МЕЖДУНАРОДНО ТУРНЕ · Чикаго',
