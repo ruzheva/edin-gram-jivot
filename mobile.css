@@ -3,6 +3,9 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{overflow-x:hidden}
 img,iframe{max-width:100%}
 
+/* Hide unwanted premiere note */
+.premiereCredit{display:none!important}
+
 /* Program module number badges */
 .module button>span:first-child{display:flex!important;align-items:center!important;gap:12px!important}
 .module button>span:first-child>.num{display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 34px!important;width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;max-width:34px!important;max-height:34px!important;padding:0!important;margin:0!important;line-height:1!important;text-align:center!important;border-radius:50%!important;transform:none!important}
