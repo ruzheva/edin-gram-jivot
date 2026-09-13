@@ -27,6 +27,7 @@ img,iframe{max-width:100%}
   .links{display:flex!important;width:100%;gap:8px!important;overflow-x:auto;overscroll-behavior-inline:contain;padding:4px 0 2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.links::-webkit-scrollbar{display:none}
   .links a{flex:0 0 auto;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;padding:9px 13px;border:1px solid var(--line,#d7eaed);border-radius:999px;background:#fff;color:#111!important;-webkit-text-fill-color:#111!important;text-shadow:none!important;font-size:.82rem}
   .links a[href="films.html"]{color:#d3232a!important;-webkit-text-fill-color:#d3232a!important}
+  .heroVisual img{width:100%!important;height:auto!important;display:block!important;object-fit:contain!important;object-position:center!important;border-radius:28px!important}
 }
 @media(max-width:600px){.c{width:calc(100% - 24px)!important}nav{padding:8px 0 10px}.brand img{width:42px!important;height:42px!important}.brand span{font-size:.76rem!important}.links{gap:6px!important}.links a{padding:8px 11px;font-size:.8rem}.links a[href="films.html"]{color:#d3232a!important;-webkit-text-fill-color:#d3232a!important}}
 @media(max-width:380px){.c{width:calc(100% - 20px)!important}.brand span{font-size:.7rem!important}.links a{font-size:.76rem;padding:8px 9px}.links a[href="films.html"]{color:#d3232a!important;-webkit-text-fill-color:#d3232a!important}}
