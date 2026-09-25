@@ -1,22 +1,15 @@
----
-layout: null
-permalink: /sitemap.xml
----
 <?xml version="1.0" encoding="UTF-8"?>
-{% assign langs = "bg,en,es,fr,de,ru,zh,ar,pt,it,tr,ro,el,sr,mk" | split: "," %}
-{% assign pages = "index.html,our-story.html,programs.html,program-children-parents.html,hobby.html,conferences.html,conference-1.html,conference-2.html,conference-4.html,films.html,film.html,days.html" | split: "," %}
-{% assign base = "https://ruzheva.github.io/edin-gram-jivot/" %}
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{% for page in pages %}
-  {% for lang in langs %}
-    {% capture current_url %}{% if lang == "bg" %}{% if page == "index.html" %}{{ base }}{% else %}{{ base }}{{ page }}{% endif %}{% else %}{% if page == "index.html" %}{{ base }}{{ lang }}/{% else %}{{ base }}{{ lang }}/{{ page }}{% endif %}{% endif %}{% endcapture %}
-  <url>
-    <loc>{{ current_url | strip }}</loc>
-    {% for alt in langs %}{% capture alt_url %}{% if alt == "bg" %}{% if page == "index.html" %}{{ base }}{% else %}{{ base }}{{ page }}{% endif %}{% else %}{% if page == "index.html" %}{{ base }}{{ alt }}/{% else %}{{ base }}{{ alt }}/{{ page }}{% endif %}{% endif %}{% endcapture %}
-    <xhtml:link rel="alternate" hreflang="{{ alt }}" href="{{ alt_url | strip }}"/>{% endfor %}
-    {% capture default_url %}{% if page == "index.html" %}{{ base }}{% else %}{{ base }}{{ page }}{% endif %}{% endcapture %}
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ default_url | strip }}"/>
-  </url>
-  {% endfor %}
-{% endfor %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://edingramjivot.bg/</loc></url>
+  <url><loc>https://edingramjivot.bg/our-story.html</loc></url>
+  <url><loc>https://edingramjivot.bg/programs.html</loc></url>
+  <url><loc>https://edingramjivot.bg/program-children-parents.html</loc></url>
+  <url><loc>https://edingramjivot.bg/hobby.html</loc></url>
+  <url><loc>https://edingramjivot.bg/conferences.html</loc></url>
+  <url><loc>https://edingramjivot.bg/conference-1.html</loc></url>
+  <url><loc>https://edingramjivot.bg/conference-2.html</loc></url>
+  <url><loc>https://edingramjivot.bg/conference-4.html</loc></url>
+  <url><loc>https://edingramjivot.bg/films.html</loc></url>
+  <url><loc>https://edingramjivot.bg/film.html</loc></url>
+  <url><loc>https://edingramjivot.bg/days.html</loc></url>
 </urlset>
